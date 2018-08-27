@@ -69,19 +69,15 @@ static SV* graphql_parse(const char* string, const char* file, int schema)
 
     if (json) {
         free((void*) json);
-        fprintf(stderr, "GONZO: freed json\n");
     }
     if (error) {
         graphql_error_free(error);
-        fprintf(stderr, "GONZO: freed error\n");
     }
     if (node) {
         graphql_node_free(node);
-        fprintf(stderr, "GONZO: freed AST\n");
     }
     if (fp) {
         fclose(fp);
-        fprintf(stderr, "GONZO: closed file\n");
     }
     return pstr;
 }
@@ -120,13 +116,13 @@ new(char* CLASS, HV* opt = NULL)
   OUTPUT: RETVAL
 
 SV*
-parse_string(GraphQL* graphql, const char* string, int schema = 0)
+parse_string(GraphQL* graphql, const char* string, int schema = 1)
   CODE:
     RETVAL = graphql_parse(string, 0, schema);
   OUTPUT: RETVAL
 
 SV*
-parse_file(GraphQL* graphql, const char* name, int schema = 0)
+parse_file(GraphQL* graphql, const char* name, int schema = 1)
   CODE:
     RETVAL = graphql_parse(0, name, schema);
   OUTPUT: RETVAL
