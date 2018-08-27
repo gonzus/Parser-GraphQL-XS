@@ -1,0 +1,12 @@
+.gitignore
+Changes
+graphql.xs
+lib/Parser/GraphQL/XS.pm
+bin/release.sh
+LICENSE
+MANIFEST
+MANIFEST.SKIP
+Makefile.PL
+ppport.h
+README.md
+typemap
