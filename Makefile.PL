@@ -19,8 +19,7 @@ WriteMakefile(
     AUTHOR         => [
         'Gonzalo Diethelm (gonzus@cpan.org)',
     ],
-    LIBS           => [ '-lgraphqlparser-c' ],
-    INC            => '-I/usr/local/include/graphqlparser',
+    LIBS           => [ '-lgraphqlparser' ],
     OBJECT         => '$(O_FILES)',
     META_MERGE     => {
         'meta-spec' => { version => 2 },

@@ -4,9 +4,9 @@
 #include "XSUB.h"
 #include "ppport.h"
 
-#include "c/GraphQLParser.h"
-#include "c/GraphQLAstNode.h"
-#include "c/GraphQLAstToJSON.h"
+#include "graphqlparser/c/GraphQLParser.h"
+#include "graphqlparser/c/GraphQLAstNode.h"
+#include "graphqlparser/c/GraphQLAstToJSON.h"
 
 /*
  * This is our internal data structure.
