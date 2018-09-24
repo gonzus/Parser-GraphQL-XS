@@ -10,3 +10,5 @@ Makefile.PL
 ppport.h
 README.md
 typemap
+t/00_basic.t
+t/01_parse.t
