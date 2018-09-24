@@ -5,7 +5,7 @@ use parent 'Exporter';
 
 use XSLoader;
 
-our $VERSION = '0.000001';
+our $VERSION = '0.000002';
 XSLoader::load( __PACKAGE__, $VERSION );
 
 our @EXPORT_OK = qw[];
@@ -23,7 +23,7 @@ Parser::GraphQL::XS - Perl XS binding for the libgraphsql GraphSQL parsing libra
 
 =head1 VERSION
 
-Version 0.000001
+Version 0.000002
 
 =head1 SYNOPSIS
 
