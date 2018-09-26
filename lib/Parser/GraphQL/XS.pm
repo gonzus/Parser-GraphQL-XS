@@ -19,7 +19,8 @@ __END__
 
 =head1 NAME
 
-Parser::GraphQL::XS - Perl XS binding for the libgraphsql GraphSQL parsing library
+Parser::GraphQL::XS - Perl XS binding for libgraphqlparser, a GraphQL query
+parser in C++ with C and C++ APIs.
 
 =head1 VERSION
 
@@ -32,6 +33,12 @@ Version 0.000002
 =head1 METHODS/ATTRIBUTES
 
 =head1 SEE ALSO
+
+=over 4
+
+=item * L<< https://github.com/graphql/libgraphqlparser >>
+
+=back
 
 =head1 LICENSE
 
