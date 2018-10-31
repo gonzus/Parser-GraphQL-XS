@@ -5,7 +5,7 @@ use parent 'Exporter';
 
 use XSLoader;
 
-our $VERSION = '0.000002';
+our $VERSION = '0.000003';
 XSLoader::load( __PACKAGE__, $VERSION );
 
 our @EXPORT_OK = qw[];
@@ -24,7 +24,7 @@ parser in C++ with C and C++ APIs.
 
 =head1 VERSION
 
-Version 0.000002
+Version 0.000003
 
 =head1 SYNOPSIS
 
