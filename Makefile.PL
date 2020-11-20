@@ -1,5 +1,6 @@
 use 5.008009;
 use ExtUtils::MakeMaker;
+use Alien::libgraphqlparser;
 
 WriteMakefile(
     NAME           => 'Parser::GraphQL::XS',
@@ -7,6 +8,9 @@ WriteMakefile(
     ABSTRACT_FROM  => 'lib/Parser/GraphQL/XS.pm',
     LICENSE        => 'mit',
     MIN_PERL_VERSION => 5.018000,
+    CONFIGURE_REQUIRES => {
+        'Alien::libgraphqlparser' => 0.01,
+    },
     PREREQ_PM      => {
         'XSLoader'     => 0,
     },
@@ -19,7 +23,7 @@ WriteMakefile(
     AUTHOR         => [
         'Gonzalo Diethelm (gonzus@cpan.org)',
     ],
-    LIBS           => [ '-lgraphqlparser' ],
+    LIBS           => [ Alien::libgraphqlparser->libs || '-lgraphqlparser' ],
     OBJECT         => '$(O_FILES)',
     META_MERGE     => {
         'meta-spec' => { version => 2 },
@@ -48,6 +52,7 @@ sub cflags {
         comment
     /;
     $self->{CCFLAGS} .= " -W$_" for @warning_flags_always;
+    $self->{CCFLAGS} .= " " . Alien::libgraphqlparser->cflags // '';
 
     foreach (@cflags) {
         $_ = "CCFLAGS = $self->{CCFLAGS}" if /^CCFLAGS/;
