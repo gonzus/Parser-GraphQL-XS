@@ -1,6 +1,18 @@
 use 5.008009;
+use Config;
 use ExtUtils::MakeMaker;
 use Alien::libgraphqlparser;
+
+my $linker_flags = $Config{lddlflags} // '';
+$linker_flags   .= " ";
+# ->libs_static is actually Libs + Libs.private; the out-in-the-wild version
+# of libgraphqlparser leaves that empty, while the version built by
+# `Alien::libgraphqlparser` puts the static library there.
+# So if we are linking against an OS-provided .so, everything works as
+# before, but if we are linking against the private version built by
+# Alien::libgraphqlparser, we end up statically linking against it,
+# since otherwise we would not be able to dlopen() it.
+$linker_flags   .= Alien::libgraphqlparser->libs_static;
 
 WriteMakefile(
     NAME           => 'Parser::GraphQL::XS',
@@ -23,7 +35,7 @@ WriteMakefile(
     AUTHOR         => [
         'Gonzalo Diethelm (gonzus@cpan.org)',
     ],
-    LIBS           => [ Alien::libgraphqlparser->libs || '-lgraphqlparser' ],
+    LDDLFLAGS      => $linker_flags,
     OBJECT         => '$(O_FILES)',
     META_MERGE     => {
         'meta-spec' => { version => 2 },
